@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .container { text-align: center; background: rgba(0,0,0,0.6); padding: 40px; border-radius: 15px; width: 400px; }
+    button { background-color: #FFDD00; color: #000; font-weight: bold; border: none; border-radius: 8px; padding: 12px 20px; cursor: pointer; transition: 0.3s; }
+    button:hover { background-color: #FFD700; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Secure Dashboard</h2>
+    <p id="welcomeUser"></p>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    const user = localStorage.getItem("loggedInUser");
+    if (!user) {
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("welcomeUser").innerText = "Hello, " + user + "!";
+    }
+
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
